@@ -1,11 +1,19 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./src/output.css" />
     <link rel="stylesheet" href="style.css" />
     <title>Document</title>
+    <!-- font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <!-- Embedded font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -98,6 +106,73 @@
     >
       <ion-icon name="airplane-outline"></ion-icon>
     </section>
+    <!-- How it help people -->
+    <label
+      for="toggle"
+      class="w-[100px] h-[40px] border border-[#ccc] rounded-full fixed right-5 bottom-5 z-50 p-[5px] inline-block cursor-pointer toggle-switch"
+    >
+      <input
+        type="checkbox"
+        name=""
+        id="toggle"
+        class="hidden darkmode-input"
+      />
+      <section
+        class="w-[100px] h-[40px] border border-[#ccc] rounded-full fixed right-5 bottom-5 z-50 p-[5px] transition-colors"
+      >
+        <section
+          class="w-7 h-7 bg-[#ccc] rounded-full transition-all transition-transform darkmode-spinner"
+        ></section>
+      </section>
+    </label>
+    <section class="mx-auto max-w-[1200px] grid grid-cols-4 gap-x-5 p-5">
+      <section
+        class="px-5 py-8 rounded-lg border border-[#eee] text-center bg-white dark:bg-[#0F0D58]"
+      >
+        <img
+          src="./3D-icon/icon-1.png"
+          alt=""
+          class="mb-5 max-w-[100px] mx-auto"
+        />
+        <h3 class="text-lg font-semibold mb-6 text-[#0F0D58] dark:text-white">
+          Recommendation
+        </h3>
+        <section
+          class="text-sm leading-loose text-[#9191B4] font-normal dark:text-white"
+        >
+          After an uneventful career as a midfielder in the Portuguese leagues,
+          Mourinho retired from playing aged 24 and moved into coaching.
+        </section>
+      </section>
+    </section>
+
+    <script>
+      const toggleSwitch = document.querySelector(
+        '.toggle-switch input[type="checkbox"]',
+      );
+      const currentTheme = localStorage.getItem("theme");
+
+      if (currentTheme) {
+        document.documentElement.setAttribute("class", currentTheme);
+
+        if (currentTheme === "dark") {
+          toggleSwitch.checked = true;
+        }
+      }
+
+      function switchTheme(e) {
+        if (e.target.checked) {
+          document.documentElement.setAttribute("class", "dark");
+          localStorage.setItem("theme", "dark");
+        } else {
+          document.documentElement.setAttribute("class", "light");
+          localStorage.setItem("theme", "light");
+        }
+      }
+
+      toggleSwitch.addEventListener("change", switchTheme);
+    </script>
+
     <script
       type="module"
       src="https://unpkg.com/ionicons@7.4.0/dist/ionicons/ionicons.esm.js"
